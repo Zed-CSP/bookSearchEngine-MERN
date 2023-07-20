@@ -47,7 +47,7 @@ const resolvers = {
                 return User.findOneAndUpdate(   
                     {_id: context.user._id},
                     {$addToSet: {savedBooks: bookData}},
-                    {new: true, runValidators: true}
+                    {new: true, runValidators: false}
                 );
             }
         throw new AuthenticationError('You need to be logged in to save this book!');
