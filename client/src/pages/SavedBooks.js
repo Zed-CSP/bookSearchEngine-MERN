@@ -1,14 +1,21 @@
-import {Container, Card, Button, Row, Col} from 'react-bootstrap';
+import { Container, Card, Button, Row, Col } from 'react-bootstrap';
 import { useQuery, useMutation } from '@apollo/client';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
+import { useEffect } from "react";
+
 const SavedBooks = () => {
-  const {loading, data} = useQuery(GET_ME);
+  const { loading, data } = useQuery(GET_ME);
   const userData = data?.me || {};
-  const [removeBook, {error}] = useMutation(REMOVE_BOOK);
+  useEffect(() => {
+    console.log(data)
+    console.log(loading)
+  }, [data, loading])
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
+
 
   if (loading) {
     return <h2>LOADING...</h2>;
@@ -24,7 +31,7 @@ const SavedBooks = () => {
 
     try {
       const data = await removeBook({
-        variables: {bookId: bookId}
+        variables: { bookId: bookId }
       });
       console.log(data);
 
@@ -48,7 +55,7 @@ const SavedBooks = () => {
       </div>
       <Container>
         <h2 className='pt-5'>
-          {userData.savedBooks
+          {userData
             ? `Viewing ${userData.savedBooks.length} saved ${userData.savedBooks.length === 1 ? 'book' : 'books'}:`
             : 'You have no saved books!'}
         </h2>
