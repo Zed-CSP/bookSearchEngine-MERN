@@ -41,6 +41,28 @@ const resolvers = {
 
             return{token, user};
         }
+
+        saveBook: async (parent, {bookData}, context) => {
+            if(context.user) {
+                return User.findOneAndUpdate(   
+                    {_id: context.user._id},
+                    {$addToSet: {savedBooks: bookData}},
+                    {new: true, runValidators: true}
+                );
+            }
+        throw new AuthenticationError('You need to be logged in to save this book!');
+        },
+
+        removeBook: async (parent, {bookId}, context) => {
+            if(context.user) {
+                return User.findOneAndUpdate(
+                    {_id: context.user._id},
+                    {$pull: {savedBooks: {bookId}}},
+                    {new: true}
+                );
+            }
+            throw new AuthenticationError('You need to be logged in to remove this book!');
+        }
     }
 };
 
