@@ -4,6 +4,8 @@ import Auth from '../utils/auth';
 import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 import { gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
+
 
 const SAVE_BOOK = gql`
   mutation saveBook($bookData: BookInput!) {
@@ -28,7 +30,7 @@ const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);   // create state for holding returned google api data
   const [searchInput, setSearchInput] = useState('');   // create state for holding our search field data
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());  // create state to hold saved bookId values
-  const [saveBook, { error }] = useMutation(SAVE_BOOK);
+  const [saveBook, { error }] = useMutation(SAVE_BOOK); // create method to search for books and set state on form submit
 
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
