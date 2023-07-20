@@ -41,30 +41,48 @@ export const ADD_USER = gql`
   }
 `;
 
-export const loginUser = (userData) => {
-
-
 // save book data for a logged in user
-export const saveBook = (bookData, token) => {
-  return fetch('/api/users', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-      authorization: `Bearer ${token}`,
-    },
-    body: JSON.stringify(bookData),
-  });
-};
+export const SAVE_BOOK = gql`
+  mutation saveBook(
+    $authors: [String]!, 
+    $description: String!, 
+    $title: String!, 
+    $bookId: String!, 
+    $image: String, 
+    $link: String
+    ) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        title
+        description
+        image
+        link
+      }
+    }
+`;
 
 // remove saved book data for a logged in user
-export const deleteBook = (bookId, token) => {
-  return fetch(`/api/users/books/${bookId}`, {
-    method: 'DELETE',
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
-};
+export const REMOVE_BOOK = gql`
+  mutation removeBook($bookId: String!) {
+    _id
+    username
+    email
+    bookCount
+    savedBooks {
+      bookId
+      authors
+      title
+      description
+      image
+      link
+    }
+  }
+`;
 
 // make a search to google books api
 // https://www.googleapis.com/books/v1/volumes?q=harry+potter
