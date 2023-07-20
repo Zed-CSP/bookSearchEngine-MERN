@@ -1,4 +1,4 @@
-const {user} = require('../models');
+const {User} = require('../models');
 const {AuthenticationError} = require('apollo-server-express');
 const {signToken} = require('../utils/auth');
 
@@ -40,7 +40,7 @@ const resolvers = {
             const token = signToken(user);
 
             return{token, user};
-        }
+        },
 
         saveBook: async (parent, {bookData}, context) => {
             if(context.user) {
