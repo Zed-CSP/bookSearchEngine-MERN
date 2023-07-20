@@ -1,43 +1,47 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Container,
-  Col,
-  Form,
-  Button,
-  Card,
-  Row
-} from 'react-bootstrap';
-
+import {Container, Col, Form, Button, Card, Row} from 'react-bootstrap';
 import Auth from '../utils/auth';
-import { saveBook, searchGoogleBooks } from '../utils/API';
+import { searchGoogleBooks } from '../utils/API';
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
+import { gql } from '@apollo/client';
+
+const SAVE_BOOK = gql`
+  mutation saveBook($bookData: BookInput!) {
+    saveBook(bookData: $bookData) {
+      _id
+      username
+      email
+      bookCount
+      savedBooks {
+        bookId
+        authors
+        title
+        description
+        image
+        link
+      }
+    }
+  }
+`;
 
 const SearchBooks = () => {
-  // create state for holding returned google api data
-  const [searchedBooks, setSearchedBooks] = useState([]);
-  // create state for holding our search field data
-  const [searchInput, setSearchInput] = useState('');
+  const [searchedBooks, setSearchedBooks] = useState([]);   // create state for holding returned google api data
+  const [searchInput, setSearchInput] = useState('');   // create state for holding our search field data
+  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());  // create state to hold saved bookId values
+  const [saveBook, { error }] = useMutation(SAVE_BOOK);
 
-  // create state to hold saved bookId values
-  const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
-
-  // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
-  // learn more here: https://reactjs.org/docs/hooks-effect.html#effects-with-cleanup
   useEffect(() => {
     return () => saveBookIds(savedBookIds);
   });
 
-  // create method to search for books and set state on form submit
-  const handleFormSubmit = async (event) => {
+  const handleFormSubmit = async (event) => {  // create method to search for books and set state on form submit
     event.preventDefault();
-
     if (!searchInput) {
       return false;
     }
 
     try {
       const response = await searchGoogleBooks(searchInput);
-
       if (!response.ok) {
         throw new Error('something went wrong!');
       }
@@ -59,13 +63,10 @@ const SearchBooks = () => {
     }
   };
 
-  // create function to handle saving a book to our database
-  const handleSaveBook = async (bookId) => {
-    // find the book in `searchedBooks` state by the matching id
-    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);
-
-    // get token
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
+  const handleSaveBook = async (bookId) => {   // create function to handle saving a book to our database
+    const bookToSave = searchedBooks.find((book) => book.bookId === bookId);     // find the book in `searchedBooks` state by the matching id
+   
+    const token = Auth.loggedIn() ? Auth.getToken() : null; // get token
 
     if (!token) {
       return false;
@@ -78,8 +79,7 @@ const SearchBooks = () => {
         throw new Error('something went wrong!');
       }
 
-      // if book successfully saves to user's account, save book id to state
-      setSavedBookIds([...savedBookIds, bookToSave.bookId]);
+      setSavedBookIds([...savedBookIds, bookToSave.bookId]);  // if book successfully saves to user's account, save book id to state
     } catch (err) {
       console.error(err);
     }
