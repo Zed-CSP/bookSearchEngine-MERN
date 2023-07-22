@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Book Search Engine - MERN + GQL & Apollo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  ![License](https://img.shields.io/badge/license-MIT-blue.svg)
+  
+  ## URL
+  
 
-## Available Scripts
 
-In the project directory, you can run:
+  ## Description
 
-### `npm start`
+Google Books Search Engine Using GraphQL and Apollo server. Site allows user to Log In and save books for later. User may also delete books from their list.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  ## Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Images](#images)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Tests](#tests)
+  - [Questions](#questions)
 
-### `npm test`
+  ## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Site Is deployed!
 
-### `npm run build`
+  ## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use Nav bar to search for a book. At the bottom of the description user may click save. the user may view all the saved books and manage them on the saved books page. If the user wants to delete a book from their saved books, the user may click the delete Button.
+  
+  ## Images
+  
+  ![]()
+  
+  ## License
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ This project is licensed under the MIT license. To learn more please visit https://choosealicense.com/licenses/mit/
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ## Credits
 
-### `npm run eject`
+  Christopher Peret,
+  GraphQl docs
+  MDN,
+  Stack Overflow,
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  ## Tests
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  N/A
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  ## Questions
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  If you have any issues, feel free to log an issue on the repo.
