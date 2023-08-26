@@ -3,7 +3,7 @@
   ![License](https://img.shields.io/badge/license-MIT-blue.svg)
   
   ## URL
-  ![Here](https://book-search-engine-gql-217a88bfa6ce.herokuapp.com/)
+https://book-search-engine-gql-217a88bfa6ce.herokuapp.com/
 
 
   ## Description
