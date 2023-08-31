@@ -43,10 +43,6 @@ Use Nav bar to search for a book. At the bottom of the description user may clic
   MDN,
   Stack Overflow,
 
-  ## Tests
-
-  N/A
-
   ## Questions
 
   If you have any issues, feel free to log an issue on the repo.
